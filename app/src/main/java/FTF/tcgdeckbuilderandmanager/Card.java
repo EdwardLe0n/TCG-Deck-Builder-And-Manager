@@ -5,13 +5,15 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import FTF.tcgdeckbuilderandmanager.DAO.AppDatabase;
+
 // Using  a modified version of the word code: https://developer.android.com/codelabs/android-room-with-a-view#16
 
 // todo: Implement cards having thie own images
 // todo: Implement season numbers and individual card season numbers  (S0 -100)
 // todo: Set up 'Requirements' (Summon monsters needing another specific monster in the deck)
 
-@Entity(tableName = "card_table")
+@Entity(tableName = AppDatabase.CARD_TABLE)
 public class Card {
 
     // Primary key is used to help look through the list of cards
@@ -216,6 +218,7 @@ public class Card {
     public String toString() {
         return "Card{ Name: " + this.getCardName() +
                 " Season Number: " + this.getFormNum() +
+                " Card ID: " + this.getId() +
                 '}';
     }
 }
