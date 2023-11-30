@@ -4,4 +4,22 @@
     <string name="text2" >Text 2</string>
     <string name="text3" >Text 3</string>
     <string name="text4" >Text 4</string>
+
+    <string name="add_card">Add a card?</string>
+    <string name="add_card_shpeal">Add a card?</string>
+
+    <string name="hint_cardName">Name...</string>
+    <string name="hint_rpsType">1, 2, or 3...</string>
+    <string name="hint_type"> 1 or 2...</string>
+    <string name="hint_subType">1 or 2...</string>
+    <string name="hint_power">Any number </string>
+    <string name="hint_slots">Any single digit number</string>
+
+    <string name="hint_username">Username...</string>
+    <string name="hint_password">Password...</string>
+    <string name="hint_password2">Same password as earlier...</string>
+
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Card is not saved because of some error within the card creation </string>
+
 </resources>

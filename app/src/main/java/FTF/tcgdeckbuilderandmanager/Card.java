@@ -81,6 +81,11 @@ public class Card {
     @ColumnInfo(name = "Duplicates Allowed?")
     private boolean mDupesAllowed;
 
+    public Card() {
+        this("Subsitute", 1, 1, 1, 200,
+                1, true, -1, -1, false, null);
+    }
+
     public Card(@NonNull String name, @NonNull Integer rpsType, @NonNull Integer type,
                 @NonNull Integer subType, Integer power, @NonNull Integer slots,
                 @NonNull boolean dupesAllowed, @NonNull Integer setNum, @NonNull Integer setMonNum,
@@ -105,46 +110,45 @@ public class Card {
 
     // Standard getters that get used throughout the code
 
-    public String getCardName() {
-        return this.mName;
+    public int getID() {
+        return mID;
     }
 
-    public Integer getCardType() {
-        return this.mType;
-    }
-
-    public Integer getSubType() {
-        return this.mSubType;
-    }
-
-    public boolean isLegal() {
-        return mIsLegal;
-    }
-
-    public boolean isDupesAllowed() {
-        return mDupesAllowed;
-    }
-
+    @NonNull
     public String getName() {
         return mName;
     }
 
+    @NonNull
     public Integer getSetNum() {
         return mSetNum;
     }
 
+    @NonNull
     public Integer getSetMonNum() {
         return mSetMonNum;
     }
 
+    @NonNull
     public Integer getType() {
         return mType;
+    }
+
+    @NonNull
+    public Integer getSubType() {
+        return mSubType;
+    }
+
+    @NonNull
+    public Integer getRPSType() {
+        return mRPSType;
     }
 
     public Integer getPower() {
         return mPower;
     }
 
+    @NonNull
     public Integer getSlots() {
         return mSlots;
     }
@@ -153,16 +157,60 @@ public class Card {
         return mEffect;
     }
 
-    public int getId() {
-        return mID;
+    public boolean getIsLegal() {
+        return mIsLegal;
     }
 
-    public Integer getRpsType() {
-        return mRPSType;
+    public boolean getDupesAllowed() {
+        return mDupesAllowed;
     }
 
-    public void setId(int id) {
-        this.mID = id;
+    public void setID(int mID) {
+        this.mID = mID;
+    }
+
+    public void setName(@NonNull String mName) {
+        this.mName = mName;
+    }
+
+    public void setSetNum(@NonNull Integer mSetNum) {
+        this.mSetNum = mSetNum;
+    }
+
+    public void setSetMonNum(@NonNull Integer mSetMonNum) {
+        this.mSetMonNum = mSetMonNum;
+    }
+
+    public void setType(@NonNull Integer mType) {
+        this.mType = mType;
+    }
+
+    public void setSubType(@NonNull Integer mSubType) {
+        this.mSubType = mSubType;
+    }
+
+    public void setRPSType(@NonNull Integer mRPSType) {
+        this.mRPSType = mRPSType;
+    }
+
+    public void setPower(Integer mPower) {
+        this.mPower = mPower;
+    }
+
+    public void setSlots(@NonNull Integer mSlots) {
+        this.mSlots = mSlots;
+    }
+
+    public void setEffect(String mEffect) {
+        this.mEffect = mEffect;
+    }
+
+    public void setIsLegal(boolean mIsLegal) {
+        this.mIsLegal = mIsLegal;
+    }
+
+    public void setDupesAllowed(boolean mDupesAllowed) {
+        this.mDupesAllowed = mDupesAllowed;
     }
 
     // This class returns a string dependent on the cards type and subtype
@@ -170,7 +218,7 @@ public class Card {
     public String getFormType() {
         String temp = "";
 
-        if (this.getCardType() == 1) {
+        if (this.getType() == 1) {
 
             if (this.getSubType() == 1) {
                 temp = "Basic Monster";
@@ -178,7 +226,7 @@ public class Card {
                 temp = "Summonable Monster";
             }
 
-        } else if (this.getCardType() == 2) {
+        } else if (this.getSubType() == 2) {
 
             if (this.getSubType() == 1) {
                 temp = "Equipment";
@@ -198,16 +246,16 @@ public class Card {
 
     }
 
-    public String getIsLegal() {
-        if (this.isLegal()) {
+    public String checkIsLegal() {
+        if (this.getIsLegal()) {
             return "YEAH";
         } else {
             return "Nuh uh";
         }
     }
 
-    public String getDupesAllowed() {
-        if (this.isDupesAllowed()) {
+    public String isDupesAllowed() {
+        if (this.getDupesAllowed()) {
             return "YEAH";
         } else {
             return "Nuh uh";
@@ -216,9 +264,9 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{ Name: " + this.getCardName() +
+        return "Card{ Name: " + this.getName() +
                 " Season Number: " + this.getFormNum() +
-                " Card ID: " + this.getId() +
+                " Card ID: " + this.getID() +
                 '}';
     }
 }
