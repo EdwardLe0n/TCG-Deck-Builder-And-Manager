@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TCG Deck Builder And Manager</string>
+    <string name="text1" >Text 1</string>
+    <string name="text2" >Text 2</string>
+    <string name="text3" >Text 3</string>
+    <string name="text4" >Text 4</string>
 </resources>
