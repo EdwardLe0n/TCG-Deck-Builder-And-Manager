@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/mainGymLogDisplay"
+        android:id="@+id/cardInfoShpeal"
         android:layout_width="373dp"
         android:layout_height="217dp"
         android:layout_marginStart="16dp"
@@ -15,39 +15,54 @@
         android:layout_marginEnd="16dp"
         android:fadeScrollbars="true"
         android:scrollbars = "vertical"
-        android:text="@string/app_name"
+        android:text="Info blurb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/mainExerciseEditText"
+        android:id="@+id/cardNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="@string/text1"
+        android:hint="@string/hint_cardName"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainGymLogDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/cardInfoShpeal" />
 
     <EditText
-        android:id="@+id/mainWeightEditText"
+        android:id="@+id/setNumEditText"
+        android:layout_width="107dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="122dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="bees"
+        android:inputType="numberSigned"
+        app:layout_constraintEnd_toStartOf="@+id/mainSubmitButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardNameEditText" />
+
+    <EditText
+        android:id="@+id/cardRPSTypeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="@string/text2"
+        android:hint="@string/hint_rpsType"
         android:inputType="numberSigned"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainExerciseEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/setNumEditText" />
 
     <EditText
-        android:id="@+id/mainRepsEditText"
+        android:id="@+id/cardTypeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -55,12 +70,12 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="@string/text3"
+        android:hint="@string/hint_type"
         android:inputType="numberSigned"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.018"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainWeightEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/cardRPSTypeEditText" />
 
     <Button
         android:id="@+id/mainSubmitButton"
@@ -71,5 +86,5 @@
         android:text="@string/text4"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainGymLogDisplay" />
+        app:layout_constraintTop_toBottomOf="@+id/cardInfoShpeal" />
 </androidx.constraintlayout.widget.ConstraintLayout>
