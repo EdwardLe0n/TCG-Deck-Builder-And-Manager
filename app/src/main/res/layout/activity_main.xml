@@ -8,14 +8,14 @@
 
     <TextView
         android:id="@+id/cardInfoShpeal"
-        android:layout_width="373dp"
-        android:layout_height="217dp"
+        android:layout_width="376dp"
+        android:layout_height="137dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:fadeScrollbars="true"
-        android:scrollbars = "vertical"
-        android:text="Info blurb"
+        android:scrollbars="vertical"
+        android:text="@string/add_card_shpeal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
     <EditText
         android:id="@+id/cardNameEditText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/StandardButtonHeight"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -35,56 +35,171 @@
 
     <EditText
         android:id="@+id/setNumEditText"
-        android:layout_width="107dp"
-        android:layout_height="wrap_content"
+        android:layout_width="79dp"
+        android:layout_height="@dimen/StandardButtonHeight"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="122dp"
+        android:layout_marginEnd="130dp"
         android:ems="10"
         android:gravity="center"
-        android:hint="bees"
+        android:hint="@string/hint_setNum"
         android:inputType="numberSigned"
         app:layout_constraintEnd_toStartOf="@+id/mainSubmitButton"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardNameEditText" />
 
     <EditText
-        android:id="@+id/cardRPSTypeEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/setMonNumEditText"
+        android:layout_width="127dp"
+        android:layout_height="@dimen/StandardButtonHeight"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/hint_setMonNum"
+        android:inputType="numberSigned"
+        app:layout_constraintEnd_toStartOf="@+id/mainSubmitButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/setNumEditText"
+        app:layout_constraintTop_toBottomOf="@+id/cardNameEditText" />
+
+    <EditText
+        android:id="@+id/cardTypeEditText"
+        android:layout_width="103dp"
+        android:layout_height="@dimen/StandardButtonHeight"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="130dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/hint_type"
+        android:inputType="numberSigned"
+        app:layout_constraintEnd_toStartOf="@+id/mainSubmitButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setNumEditText" />
+
+    <EditText
+        android:id="@+id/cardSubTypeEditText"
+        android:layout_width="103dp"
+        android:layout_height="@dimen/StandardButtonHeight"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/hint_subType"
+        android:inputType="numberSigned"
+        app:layout_constraintEnd_toStartOf="@+id/mainSubmitButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/cardTypeEditText"
+        app:layout_constraintTop_toBottomOf="@+id/setMonNumEditText" />
+
+    <EditText
+        android:id="@+id/cardPowerEditText"
+        android:layout_width="142dp"
+        android:layout_height="@dimen/StandardButtonHeight"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/hint_power"
+        android:inputType="numberSigned"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardTypeEditText" />
+
+    <EditText
+        android:id="@+id/cardSlotEditText"
+        android:layout_width="101dp"
+        android:layout_height="@dimen/StandardButtonHeight"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/hint_slots"
+        android:inputType="numberSigned"
+        app:layout_constraintStart_toEndOf="@+id/cardPowerEditText"
+        app:layout_constraintTop_toBottomOf="@+id/cardSubTypeEditText" />
+
+    <EditText
+        android:id="@+id/cardRPSEditText"
+        android:layout_width="117dp"
+        android:layout_height="@dimen/StandardButtonHeight"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/hint_rpsType"
         android:inputType="numberSigned"
+        app:layout_constraintStart_toEndOf="@+id/cardSlotEditText"
+        app:layout_constraintTop_toBottomOf="@+id/cardSubTypeEditText" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/dupesAllowedSwitch"
+        android:layout_width="190dp"
+        android:layout_height="@dimen/StandardButtonHeight"
+        android:text="@string/hint_dupes"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="584dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setNumEditText" />
+        app:layout_constraintTop_toBottomOf="@id/cardPowerEditText"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/isLegalSwitch"
+        android:layout_width="170dp"
+        android:layout_height="@dimen/StandardButtonHeight"
+        android:text="@string/hint_legal"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="584dp"
+        app:layout_constraintStart_toEndOf="@id/dupesAllowedSwitch"
+        app:layout_constraintTop_toBottomOf="@id/cardPowerEditText"/>
 
     <EditText
-        android:id="@+id/cardTypeEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:id="@+id/cardEffectEditText"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:ems="10"
-        android:gravity="center"
-        android:hint="@string/hint_type"
-        android:inputType="numberSigned"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.018"
+        android:inputType="textMultiLine"
+        android:text="@string/hint_effect"
+        android:textSize="14sp"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardRPSTypeEditText" />
+        app:layout_constraintTop_toBottomOf="@id/dupesAllowedSwitch"/>
+
+    <EditText
+        android:id="@+id/cardDescriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="@string/hint_description"
+        android:textSize="14sp"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardEffectEditText"/>
 
     <Button
         android:id="@+id/mainSubmitButton"
-        android:layout_width="150dp"
-        android:layout_height="169dp"
+        android:layout_width="154dp"
+        android:layout_height="150dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/text4"
-        android:textSize="24sp"
+        android:text="@string/create_card"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardInfoShpeal" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

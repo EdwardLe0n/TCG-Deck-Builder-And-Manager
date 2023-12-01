@@ -1,23 +1,36 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
     <string name="app_name">TCG Deck Builder And Manager</string>
+
     <string name="text1" >Text 1</string>
     <string name="text2" >Text 2</string>
     <string name="text3" >Text 3</string>
     <string name="text4" >Text 4</string>
 
     <string name="add_card">Add a card?</string>
-    <string name="add_card_shpeal">Add a card?</string>
+    <string name="create_card">Create \nCard!</string>
 
-    <string name="hint_cardName">Name...</string>
-    <string name="hint_rpsType">1, 2, or 3...</string>
-    <string name="hint_type"> 1 or 2...</string>
-    <string name="hint_subType">1 or 2...</string>
-    <string name="hint_power">Any number </string>
-    <string name="hint_slots">Any single digit number</string>
+    <string name="add_card_shpeal" > Welcome to the add a card page! \n
+        \nNote: By filling out this page properly, you\'ll be able to add a new card to the database! \n
+        \nQuick reminder that most of these edit texts need to be filled out except for effect and description
+    </string>
 
-    <string name="hint_username">Username...</string>
-    <string name="hint_password">Password...</string>
-    <string name="hint_password2">Same password as earlier...</string>
+    <string name="hint_cardName">Name…</string>
+    <string name="hint_setNum">Set #?</string>
+    <string name="hint_setMonNum">Set Mon #?</string>
+    <string name="hint_rpsType">1, 2, or 3…</string>
+    <string name="hint_type"> 1 or 2…</string>
+    <string name="hint_subType">1 or 2…</string>
+    <string name="hint_power">Any # * 100 </string>
+    <string name="hint_slots">Any #</string>
+    <string name="hint_dupes">Dupes Allowed?</string>
+    <string name="hint_legal">Is legal?</string>
+    <string name="hint_effect">If there\'s a effect, make sure to put it here!</string>
+    <string name="hint_description">If there\'s a description, make sure to put it here!</string>
+
+    <string name="hint_username">Username…</string>
+    <string name="hint_password">Password…</string>
+    <string name="hint_password2">Same password as earlier…</string>
 
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Card is not saved because of some error within the card creation </string>
