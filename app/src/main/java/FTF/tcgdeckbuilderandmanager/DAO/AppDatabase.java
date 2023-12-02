@@ -15,7 +15,7 @@ public abstract class AppDatabase extends RoomDatabase{
 
     public static final String DATABASE_NAME = "TCGDatabase.db";
     public static final String CARD_TABLE = "card_table";
-    public static final String User_Table = "user_table";
+    public static final String USER_TABLE = "user_table";
 
     private static volatile AppDatabase instance;
     private static final Object LOCK = new Object();
