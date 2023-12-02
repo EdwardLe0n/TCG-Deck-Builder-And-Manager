@@ -7,13 +7,15 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import FTF.tcgdeckbuilderandmanager.Card;
+import FTF.tcgdeckbuilderandmanager.User;
 
-@Database(entities = {Card.class}, version = 1, exportSchema = false)
+@Database(entities = {Card.class, User.class}, version = 1, exportSchema = false)
 
 public abstract class AppDatabase extends RoomDatabase{
 
     public static final String DATABASE_NAME = "TCGDatabase.db";
     public static final String CARD_TABLE = "card_table";
+    public static final String User_Table = "user_table";
 
     private static volatile AppDatabase instance;
     private static final Object LOCK = new Object();
