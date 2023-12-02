@@ -26,10 +26,10 @@ public interface tcgDAO {
     @Delete
     void delete(Card... card);
 
-    @Query("SELECT * FROM " + AppDatabase.CARD_TABLE)
+    @Query("SELECT * FROM " + AppDatabase.CARD_TABLE + " ORDER BY `Set Number`")
     List<Card> getCards();
 
     @Query("SELECT * FROM " + AppDatabase.CARD_TABLE + " WHERE ID = :cardId")
-    List<Card> getLogById(int cardId);
+    List<Card> getCardById(int cardId);
 
 }

@@ -71,6 +71,9 @@ public class Card {
     @ColumnInfo(name = "Card Effect")
     private String mEffect;
 
+    @ColumnInfo(name = "Card Description")
+    private String mDesc;
+
     // Quick boolean that is used to show if a card is still legal
     @NonNull
     @ColumnInfo(name = "Card Legality?")
@@ -83,13 +86,13 @@ public class Card {
 
     public Card() {
         this("Subsitute", 1, 1, 1, 200,
-                1, true, -1, -1, false, null);
+                1, true, -1, -1, false, null, null);
     }
 
     public Card(@NonNull String name, @NonNull Integer rpsType, @NonNull Integer type,
                 @NonNull Integer subType, Integer power, @NonNull Integer slots,
                 @NonNull boolean dupesAllowed, @NonNull Integer setNum, @NonNull Integer setMonNum,
-                @NonNull boolean isLegal, String effect) {
+                @NonNull boolean isLegal, String effect, String desc) {
 
         this.mName = name;
         this.mSetNum = setNum;
@@ -168,6 +171,10 @@ public class Card {
         return mDupesAllowed;
     }
 
+    public String getDesc() {
+        return mDesc;
+    }
+
     public void setID(int mID) {
         this.mID = mID;
     }
@@ -214,6 +221,10 @@ public class Card {
 
     public void setDupesAllowed(boolean mDupesAllowed) {
         this.mDupesAllowed = mDupesAllowed;
+    }
+
+    public void setDesc(String desc) {
+        this.mDesc = desc;
     }
 
     // This class returns a string dependent on the cards type and subtype

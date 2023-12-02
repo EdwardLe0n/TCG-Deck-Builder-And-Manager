@@ -5,6 +5,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.room.Room;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         mCardDescription = binding.cardDescriptionEditText;
         mCreateCard = binding.newCardButton;
 
+        mMainDisplay.setMovementMethod((new ScrollingMovementMethod()));
+
         mTCGDao = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
                 .allowMainThreadQueries()
                 .build()
@@ -96,8 +99,17 @@ public class MainActivity extends AppCompatActivity {
         int cardSubType = Integer.parseInt(mCardSubType.getText().toString());
         int cardPower = Integer.parseInt(mCardPower.getText().toString());
         int cardSlots = Integer.parseInt(mCardSlots.getText().toString());
-        //boolean cardDupesAllowed = mDupesAllowed.;
+        boolean cardDupesAllowed = mDupesAllowed.isChecked();
+        int setNum = Integer.parseInt(mSetNum.getText().toString());
+        int setMonNum = Integer.parseInt(mSetMonNum.getText().toString());
+        boolean isLegal = mIsLegal.isChecked();
+        String effect = mCardEffect.getText().toString();
+        String description = mCardDescription.getText().toString();
 
+        Card c = new Card(name, cardRPSType, cardType, cardSubType, cardPower, cardSlots,
+                          cardDupesAllowed, setNum, setMonNum, isLegal, effect, description);
+
+        mTCGDao.insert(c);
 
     }
 
