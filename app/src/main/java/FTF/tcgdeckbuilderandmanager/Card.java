@@ -105,6 +105,9 @@ public class Card {
         if (effect == null) {
             this.mEffect = "No special effects";
         }
+        else {
+            this.mEffect = effect;
+        }
 
     }
 

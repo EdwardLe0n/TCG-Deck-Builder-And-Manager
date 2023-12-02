@@ -34,5 +34,8 @@
 
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Card is not saved because of some error within the card creation </string>
+    <string name="no_cards_message">No cards yet, time to make some!</string>
+    <string name="off">off</string>
+    <string name="on">on</string>
 
 </resources>

@@ -24,7 +24,12 @@ public interface tcgDAO {
     void update(Card... cards);
 
     @Delete
-    void delete(Card... cards);
+    void delete(Card... card);
 
+    @Query("SELECT * FROM " + AppDatabase.CARD_TABLE)
+    List<Card> getCards();
+
+    @Query("SELECT * FROM " + AppDatabase.CARD_TABLE + " WHERE ID = :cardId")
+    List<Card> getLogById(int cardId);
 
 }
