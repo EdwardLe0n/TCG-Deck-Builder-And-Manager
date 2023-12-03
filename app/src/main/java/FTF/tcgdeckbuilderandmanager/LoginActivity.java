@@ -9,18 +9,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import FTF.tcgdeckbuilderandmanager.DAO.AppDatabase;
 import FTF.tcgdeckbuilderandmanager.DAO.tcgDAO;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText mUsername;
-    private EditText mPassword;
+    private EditText mUsernameField;
+    private EditText mPasswordField;
 
     private Button mCreateAccount;
 
     private tcgDAO mTCGDao;
+
+    private String mUsername;
+    private String mPassword;
+    private User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +40,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void wireupDisplay() {
 
-        mUsername = findViewById(R.id.editTextUserName);
-        mPassword = findViewById(R.id.editTextPassword);
+        mUsernameField = findViewById(R.id.editTextUserName);
+        mPasswordField = findViewById(R.id.editTextPassword);
 
         mCreateAccount = findViewById(R.id.buttonLogin);
 
@@ -44,8 +49,46 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                getValuesFromDisplay();
+
+                if (checkForUserInDatabase()) {
+
+                    if (!validatePassword()) {
+                        Toast.makeText(LoginActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Intent intent = MainActivity.intentFactory(getApplicationContext(), mUser.getId());
+                        startActivity(intent);
+                    }
+
+                }
+
             }
         });
+
+    }
+
+    private boolean validatePassword() {
+        return mUser.getPassword().equals(mPassword);
+    }
+
+    private void getValuesFromDisplay(){
+
+        mUsername = mUsernameField.getText().toString();
+        mPassword = mPasswordField.getText().toString();
+
+    }
+
+    private boolean checkForUserInDatabase() {
+        mUser = mTCGDao.getUserByUsername(mUsername);
+
+        if (mUser == null) {
+            Toast.makeText(this, "No user with the username " + mUsername + " found", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
+            return true;
+        }
 
     }
 
