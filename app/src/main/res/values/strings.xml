@@ -2,15 +2,15 @@
 
     <string name="app_name">TCG Deck Builder And Manager</string>
 
-    <string name="text1" >Text 1</string>
-    <string name="text2" >Text 2</string>
-    <string name="text3" >Text 3</string>
-    <string name="text4" >Text 4</string>
+    <string name="text1">Text 1</string>
+    <string name="text2">Text 2</string>
+    <string name="text3">Text 3</string>
+    <string name="text4">Text 4</string>
 
     <string name="add_card">Add a card?</string>
     <string name="create_card">Create \nCard!</string>
 
-    <string name="add_card_shpeal" > Welcome to the add a card page! \n
+    <string name="add_card_shpeal"> Welcome to the add a card page! \n
         \nNote: By filling out this page properly, you\'ll be able to add a new card to the database! \n
         \nQuick reminder that most of these edit texts need to be filled out except for effect and description
     </string>
@@ -31,6 +31,8 @@
     <string name="hint_username">Username…</string>
     <string name="hint_password">Password…</string>
     <string name="hint_password2">Same password as earlier…</string>
+    <string name="create_user_button"> Create account?</string>
+    <string name="log_in_button">Log in?</string>
 
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Card is not saved because of some error within the card creation </string>

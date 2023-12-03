@@ -32,4 +32,6 @@ public interface tcgDAO {
     @Query("SELECT * FROM " + AppDatabase.CARD_TABLE + " WHERE ID = :cardId")
     List<Card> getCardById(int cardId);
 
+    
+
 }

@@ -39,6 +39,14 @@ public class User {
 
     }
 
+    public User(@NonNull String name, @NonNull String password) {
+
+        this.name = name;
+        this.password = password;
+        this.isAdmin = false;
+
+    }
+
     // Standard getters that get used throughout the code
 
     public String getUserName() {
