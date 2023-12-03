@@ -2,17 +2,15 @@ package FTF.tcgdeckbuilderandmanager.DAO;
 
 import androidx.room.Dao;
 
-import androidx.lifecycle.LiveData;
-import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
 
 import FTF.tcgdeckbuilderandmanager.Card;
+import FTF.tcgdeckbuilderandmanager.User;
 
 @Dao
 public interface tcgDAO {
@@ -32,6 +30,22 @@ public interface tcgDAO {
     @Query("SELECT * FROM " + AppDatabase.CARD_TABLE + " WHERE ID = :cardId")
     List<Card> getCardById(int cardId);
 
-    
+    @Insert
+    void insert(User...users);
+
+    @Update
+    void update(User...users);
+
+    @Delete
+    void delete(User...users);
+
+    @Query("SELECT * FROM " + AppDatabase.USER_TABLE)
+    List<User> getAllUsers();
+
+    @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE username = :username")
+    User getUserByUsername(String username);
+
+    @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE ID = :id")
+    User getUserByUserID(String id);
 
 }

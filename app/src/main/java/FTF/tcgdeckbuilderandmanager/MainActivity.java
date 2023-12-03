@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.room.Room;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -21,6 +24,9 @@ import FTF.tcgdeckbuilderandmanager.databinding.ActivityMainBinding;
 // https://www.youtube.com/watch?v=vxfYa2r3_vs&list=PLMljn2yeXv0GVyClU5sifWev6YUrXfBgU&index=3
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String USER_ID_KEY = "FTF.tcgdeckbuilderandmanager.userIdKey";
+    private static final String PREFERENCES_KEY = "FTF.tcgdeckbuilderandmanager.preferencesKey";
 
     ActivityMainBinding binding;
 
@@ -45,10 +51,16 @@ public class MainActivity extends AppCompatActivity {
 
     List<Card> mTCGDaoList;
 
+    private int mUserId = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        getDatabase();
+        
+        checkForUser();
 
         // Converts the xml file (activity main) into a useable object
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -74,11 +86,6 @@ public class MainActivity extends AppCompatActivity {
 
         mMainDisplay.setMovementMethod((new ScrollingMovementMethod()));
 
-        mTCGDao = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .tcgDAO();
-
         refreshDisplay();
 
         mCreateCard.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +96,49 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void getDatabase() {
+
+        mTCGDao = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
+                .allowMainThreadQueries()
+                .build()
+                .tcgDAO();
+
+    }
+
+    private void checkForUser() {
+        
+        // do we have a user in the intent?
+
+        mUserId = getIntent().getIntExtra(USER_ID_KEY, -1);
+
+        // do we have a user in the preferences
+
+        if(mUserId != -1) {
+            return;
+        }
+
+        SharedPreferences preferences = this.getSharedPreferences(PREFERENCES_KEY, Context.MODE_PRIVATE);
+
+        mUserId = preferences.getInt(USER_ID_KEY, -1);
+
+        if (mUserId != -1) {
+            return;
+        }
+
+        // do we have any users at all?
+
+        List<User> users = mTCGDao.getAllUsers();
+
+        if(users.size() <= 0) {
+            User defaultUser = new User("Og", "12345", false);
+            mTCGDao.insert(defaultUser);
+        }
+
+        Intent intent = LoginActivity.intentFactory(this);
+        startActivity(intent);
+        
     }
 
     private void createCard(){
@@ -113,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Todo: get rid of this later bc it's not needed
     private void refreshDisplay() {
 
         mTCGDaoList = mTCGDao.getCards();
@@ -128,6 +179,16 @@ public class MainActivity extends AppCompatActivity {
         else {
             mMainDisplay.setText(R.string.no_cards_message);
         }
+
+    }
+
+    public static Intent intentFactory(Context context, int userId) {
+
+        Intent intent = new Intent(context, MainActivity.class);
+        
+        intent.putExtra(USER_ID_KEY, userId);
+
+        return intent;
 
     }
 
