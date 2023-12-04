@@ -81,7 +81,7 @@ public class LandingActivity extends AppCompatActivity {
         List<User> users = mTCGDao.getAllUsers();
 
         if(users.size() <= 0) {
-            User defaultUser = new User("Og", "12345", false);
+            User defaultUser = new User("Og", "12345", true);
             mTCGDao.insert(defaultUser);
         }
 
