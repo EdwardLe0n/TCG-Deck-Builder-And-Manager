@@ -46,6 +46,6 @@ public interface tcgDAO {
     User getUserByUsername(String username);
 
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE ID = :id")
-    User getUserByUserID(String id);
+    User getUserByUserID(int id);
 
 }

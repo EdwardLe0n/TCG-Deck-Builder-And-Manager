@@ -19,7 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mUsernameField;
     private EditText mPasswordField;
 
-    private Button mCreateAccount;
+    private Button mLoginToAccount;
+    private Button mNewAccount;
 
     private tcgDAO mTCGDao;
 
@@ -43,9 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         mUsernameField = findViewById(R.id.editTextUserName);
         mPasswordField = findViewById(R.id.editTextPassword);
 
-        mCreateAccount = findViewById(R.id.buttonLogin);
+        mLoginToAccount = findViewById(R.id.buttonLogin);
+        mNewAccount = findViewById(R.id.buttonNewAccount);
 
-        mCreateAccount.setOnClickListener(new View.OnClickListener() {
+        mLoginToAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -62,6 +64,16 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                 }
+
+            }
+        });
+
+        mNewAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = CreateAccountActivity.intentFactory(getApplicationContext());
+                startActivity(intent);
 
             }
         });

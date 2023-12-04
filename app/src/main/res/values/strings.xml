@@ -32,6 +32,7 @@
     <string name="hint_password">Password…</string>
     <string name="hint_password2">Same password as earlier…</string>
     <string name="create_user_button"> Create account?</string>
+    <string name="new_account">New account?</string>
     <string name="log_in_button">Log in?</string>
 
     <string name="button_save">Save</string>
@@ -39,5 +40,10 @@
     <string name="no_cards_message">No cards yet, time to make some!</string>
     <string name="off">off</string>
     <string name="on">on</string>
+    <string name="logout">Do you want to log out?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="bees">bees</string>
+    <string name="back_button">Back</string>
 
 </resources>

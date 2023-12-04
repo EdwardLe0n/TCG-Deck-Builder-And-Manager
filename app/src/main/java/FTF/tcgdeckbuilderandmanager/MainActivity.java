@@ -1,14 +1,18 @@
 package FTF.tcgdeckbuilderandmanager;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.room.Room;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
     private int mUserId = -1;
 
+    private SharedPreferences mPreferences = null;
+    private User mUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,11 +68,15 @@ public class MainActivity extends AppCompatActivity {
         getDatabase();
         
         checkForUser();
+        addUserToPreference(mUserId);
+        logInUser(mUserId);
 
         // Converts the xml file (activity main) into a useable object
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         // Sets all calls to the objects relative to the binding
         setContentView(binding.getRoot());
+
+        getSupportActionBar().setTitle("Create a Card");
 
 
         // Connects the variables form the xml to these class variables
@@ -98,6 +109,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void logInUser(int userId) {
+
+        mUser = mTCGDao.getUserByUserID(userId);
+        invalidateOptionsMenu();
+
+    }
+
+    private void addUserToPreference(int userId) {
+
+        if(mPreferences == null) {
+            getPrefs();
+        }
+        SharedPreferences.Editor editor = mPreferences.edit();
+        editor.putInt(USER_ID_KEY, userId);
+
+    }
+
     private void getDatabase() {
 
         mTCGDao = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
@@ -119,9 +147,11 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        SharedPreferences preferences = this.getSharedPreferences(PREFERENCES_KEY, Context.MODE_PRIVATE);
+        if(mPreferences == null) {
+            getPrefs();
+        }
 
-        mUserId = preferences.getInt(USER_ID_KEY, -1);
+        mUserId = mPreferences.getInt(USER_ID_KEY, -1);
 
         if (mUserId != -1) {
             return;
@@ -139,6 +169,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = LoginActivity.intentFactory(this);
         startActivity(intent);
         
+    }
+
+    private void getPrefs() {
+        mPreferences = this.getSharedPreferences(PREFERENCES_KEY, Context.MODE_PRIVATE);
     }
 
     private void createCard(){
@@ -178,6 +212,44 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             mMainDisplay.setText(R.string.no_cards_message);
+        }
+
+    }
+
+    private void logoutUser () {
+
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+
+        alertBuilder.setMessage(R.string.logout);
+
+        alertBuilder.setPositiveButton(getString(R.string.yes),
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    clearUserFromIntent();
+                    clearUserFromPref();
+                    mUserId = -1;
+                }
+            });
+
+        alertBuilder.setNegativeButton(getString(R.string.no),
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+        });
+
+    }
+
+    private void clearUserFromIntent() {
+        addUserToPreference(-1);
+    }
+
+    private void clearUserFromPref() {
+
+        if(mPreferences == null) {
+            getPrefs();
         }
 
     }
