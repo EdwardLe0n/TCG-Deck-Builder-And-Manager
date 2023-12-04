@@ -97,13 +97,10 @@ public class MainActivity extends AppCompatActivity {
 
         mMainDisplay.setMovementMethod((new ScrollingMovementMethod()));
 
-        refreshDisplay();
-
         mCreateCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createCard();
-                refreshDisplay();
             }
         });
 
@@ -175,6 +172,8 @@ public class MainActivity extends AppCompatActivity {
         mPreferences = this.getSharedPreferences(PREFERENCES_KEY, Context.MODE_PRIVATE);
     }
 
+    // TODO: FIX LOGIC. IT SHOULD NOT BE THIS STRAIGHT FORWARD
+    // i.e. do some checks to see if the new card is even valid
     private void createCard(){
 
         String name = mCardName.getText().toString();
@@ -197,25 +196,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // Todo: get rid of this later bc it's not needed
-    private void refreshDisplay() {
-
-        mTCGDaoList = mTCGDao.getCards();
-        if (! mTCGDaoList.isEmpty()) {
-
-            StringBuilder sb = new StringBuilder();
-            for (Card c: mTCGDaoList) {
-                sb.append(c.toString());
-            }
-            mMainDisplay.setText(sb.toString());
-
-        }
-        else {
-            mMainDisplay.setText(R.string.no_cards_message);
-        }
-
-    }
-
+    // TODO: IMPLEMENT
+    // Built the method by following one of the profs tutorials
     private void logoutUser () {
 
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
