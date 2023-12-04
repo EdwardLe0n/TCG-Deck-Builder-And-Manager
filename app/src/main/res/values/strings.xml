@@ -3,6 +3,7 @@
     <string name="app_name">TCG Deck Builder And Manager</string>
 
     <string name="text1">Temp Landing activity text view</string>
+    <string name="text2">Temp Cards activity text view. There are no cards yet :(</string>
     <string name="button1">Temp button 1</string>
     <string name="button2">Temp button 2</string>
     <string name="button3">Temp button 3</string>
@@ -34,6 +35,10 @@
     <string name="create_user_button"> Create account?</string>
     <string name="new_account">New account?</string>
     <string name="log_in_button">Log in?</string>
+
+    <string name="create_button">Create</string>
+    <string name="edit_button">Edit</string>
+    <string name="delete_button">Delete</string>
 
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Card is not saved because of some error within the card creation </string>

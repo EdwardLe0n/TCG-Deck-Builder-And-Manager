@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
                     }
                     else {
-                        Intent intent = MainActivity.intentFactory(getApplicationContext(), mUser.getId());
+                        Intent intent = LandingActivity.intentFactory(getApplicationContext(), mUser.getId());
                         startActivity(intent);
                     }
 
