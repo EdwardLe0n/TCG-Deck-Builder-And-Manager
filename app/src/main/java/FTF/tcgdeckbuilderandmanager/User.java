@@ -19,7 +19,7 @@ public class User {
     // Each user has a username
     @NonNull
     @ColumnInfo(name = "Username")
-    private String name;
+    private String username;
 
     // Each user has their password!
     @NonNull
@@ -31,38 +31,47 @@ public class User {
     @ColumnInfo(name = "Administrator?")
     private boolean isAdmin;
 
-    public User(@NonNull String name, @NonNull String password, @NonNull boolean isAdmin) {
+    public User(@NonNull String username, @NonNull String password, boolean isAdmin) {
 
-        this.name = name;
+        this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;
 
     }
 
-    // Standard getters that get used throughout the code
 
-    public String getUserName() {
-        return this.name;
-    }
+    // Standard getters that get used throughout the code
 
     public int getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
         return password;
     }
 
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public void setUsername(@NonNull String username) {
+        this.username = username;
+    }
+
+    public void setPassword(@NonNull String password) {
+        this.password = password;
+    }
+
+    public void setAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     // Quick check to see whether a user has inputted the correct password

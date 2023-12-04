@@ -51,7 +51,7 @@
         android:gravity="center"
         android:hint="@string/hint_setNum"
         android:inputType="numberSigned"
-        app:layout_constraintEnd_toStartOf="@+id/mainSubmitButton"
+        app:layout_constraintEnd_toStartOf="@+id/newCardButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardNameEditText" />
@@ -67,7 +67,7 @@
         android:gravity="center"
         android:hint="@string/hint_setMonNum"
         android:inputType="numberSigned"
-        app:layout_constraintEnd_toStartOf="@+id/mainSubmitButton"
+        app:layout_constraintEnd_toStartOf="@+id/newCardButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/setNumEditText"
         app:layout_constraintTop_toBottomOf="@+id/cardNameEditText" />
@@ -83,7 +83,7 @@
         android:gravity="center"
         android:hint="@string/hint_type"
         android:inputType="numberSigned"
-        app:layout_constraintEnd_toStartOf="@+id/mainSubmitButton"
+        app:layout_constraintEnd_toStartOf="@+id/newCardButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setNumEditText" />
@@ -99,7 +99,6 @@
         android:gravity="center"
         android:hint="@string/hint_subType"
         android:inputType="numberSigned"
-        app:layout_constraintEnd_toStartOf="@+id/mainSubmitButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/cardTypeEditText"
         app:layout_constraintTop_toBottomOf="@+id/setMonNumEditText" />
@@ -176,7 +175,7 @@
         android:layout_marginEnd="12dp"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:text="@string/hint_effect"
+        android:hint="@string/hint_effect"
         android:textSize="14sp"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
@@ -191,7 +190,7 @@
         android:layout_marginEnd="12dp"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:text="@string/hint_description"
+        android:hint="@string/hint_description"
         android:textSize="14sp"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
