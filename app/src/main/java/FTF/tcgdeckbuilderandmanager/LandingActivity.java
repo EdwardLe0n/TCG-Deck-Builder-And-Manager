@@ -7,9 +7,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -105,22 +107,81 @@ public class LandingActivity extends AppCompatActivity {
         mAccountButton = findViewById(R.id.viewAccountsButton);
         mBackButton = findViewById(R.id.landingBackButton);
 
+        boolean isAdmin = mUser.getIsAdmin();
+
+        mCardsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isAdmin) {
+                    Intent intent = AdminCardsActivity.intentFactory((getApplicationContext()), mUserId);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = NormieCardsActivity.intentFactory((getApplicationContext()), mUserId);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        mDecksButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(LandingActivity.this, "Apologies but this has not been implemented yet! " +
+                        "Come back and check later", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(LandingActivity.this, "Apologies but this has not been implemented yet! " +
+                        "Come back and check later", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = LoginActivity.intentFactory((getApplicationContext()));
+                startActivity(intent);
+            }
+        });
+
     }
 
     // Todo: FIX
     private void refreshDisplay() {
 
         String temp = "ruh roh";
+        String tempB1 = "ruh roh";
+        String tempB2 = "ruh roh";
+        String tempB3 = "ruh roh";
 
         if (mUser.getIsAdmin()) {
+
             temp = "Welcome admin " + mUser.getUsername() + " ! \nI hope you're having a good day" +
                     "\nWhat would you like to do today";
+
+            tempB1 = "View / Edit Cards";
+            tempB2 = "View / Edit Decks";
+            tempB3 = "View / Edit Accounts";
+
         }
         else {
+
+            temp= "Welcome user " + mUser.getUsername() + " ! \nI hope you're having a good day" +
+                    "\nWhat would you like to do today";
+
+            tempB1 = "View Cards";
+            tempB2 = "View / Edit Decks";
+            tempB3 = "View Accounts";
 
         }
 
         mLandingText.setText(temp);
+        mCardsButton.setText(tempB1);
+        mDecksButton.setText(tempB2);
+        mAccountButton.setText(tempB3);
 
     }
 
@@ -150,7 +211,7 @@ public class LandingActivity extends AppCompatActivity {
 
     public static Intent intentFactory(Context context, int userId) {
 
-        Intent intent = new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, LandingActivity.class);
 
         intent.putExtra(USER_ID_KEY, userId);
 
