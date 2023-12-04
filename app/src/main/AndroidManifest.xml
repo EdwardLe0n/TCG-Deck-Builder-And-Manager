@@ -13,6 +13,12 @@
         android:theme="@style/Theme.TCGDeckBuilderAndManager"
         tools:targetApi="31">
         <activity
+            android:name=".NormieCardsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminCardsActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateAccountActivity"
             android:exported="false" />
         <activity
