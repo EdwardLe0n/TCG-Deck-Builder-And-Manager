@@ -9,10 +9,13 @@ import FTF.tcgdeckbuilderandmanager.DAO.AppDatabase;
 
 // Using  a modified version of the word code: https://developer.android.com/codelabs/android-room-with-a-view#16
 
-// todo: Implement cards having thie own images
-// todo: Implement season numbers and individual card season numbers  (S0 -100)
-// todo: Set up 'Requirements' (Summon monsters needing another specific monster in the deck)
+// todo: Implement cards having their own images
+// Update: will not be implemented for now
 
+// todo: Set up 'Requirements' (Summon monsters needing another specific monster in the deck)
+// Update: will not be implemented for now
+
+// This card class is the basis of all the cards in the tcg!
 @Entity(tableName = AppDatabase.CARD_TABLE)
 public class Card {
 
@@ -26,10 +29,12 @@ public class Card {
     @ColumnInfo(name = "Card Name")
     private String mName;
 
+    // This refers to the 'season/set' a card comes from. Similar to how most tcgs have different sets
     @NonNull
     @ColumnInfo(name = "Set Number")
     private Integer mSetNum;
 
+    // In each set each card has their own individual id in the set. Thats what this variable represents
     @NonNull
     @ColumnInfo(name = "Set Monster Number")
     private Integer mSetMonNum;
@@ -260,6 +265,8 @@ public class Card {
 
     }
 
+    // Quick check to see if a card is legal
+    // Atm this is not used :(
     public String checkIsLegal() {
         if (this.getIsLegal()) {
             return "YEAH";
@@ -268,6 +275,8 @@ public class Card {
         }
     }
 
+    // Quick check to see if you can have duplicates of a card
+    // Atm this is not used :(
     public String isDupesAllowed() {
         if (this.getDupesAllowed()) {
             return "YEAH";

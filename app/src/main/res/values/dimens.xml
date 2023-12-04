@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="StandardButtonHeight">40dp</dimen>
+    <dimen name="landingBigButtonWidth">200dp</dimen>
+    <dimen name="landingBigButtonHeight">70dp</dimen>
 </resources>
